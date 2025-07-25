@@ -1,3 +1,4 @@
 data/curated
 data/raw
 data/feature_store
+.env
