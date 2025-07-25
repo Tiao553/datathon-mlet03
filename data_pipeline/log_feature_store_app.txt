@@ -1,0 +1,190 @@
+Processando registros:  99%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████▏| 994/1000 [10:00:18<10:07, 101.17s/it]Tempo de execução: 49.39 segundos
+Uso de CPU: 0.20%
+Uso de memória: -3117056.00 bytes
+Erro ao decodificar JSON: Expecting value: line 1 column 1 (char 0)
+[2025-07-22 09:17:17] [WARNING] - [RETRY CANDIDATO] Tentativa 1 falhou: 9 validation errors for CandidatoEstruturado
+principais_ferramentas_tecnologicas
+  Field required [type=missing, input_value={}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.11/v/missing
+ferramentas_tecnologicas
+  Field required [type=missing, input_value={}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.11/v/missing
+competencias_tecnicas
+  Field required [type=missing, input_value={}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.11/v/missing
+competencias_comportamentais
+  Field required [type=missing, input_value={}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.11/v/missing
+experiencia_anos
+  Field required [type=missing, input_value={}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.11/v/missing
+senioridade_aparente
+  Field required [type=missing, input_value={}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.11/v/missing
+formacao_academica
+  Field required [type=missing, input_value={}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.11/v/missing
+nivel_formacao
+  Field required [type=missing, input_value={}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.11/v/missing
+area_formacao
+  Field required [type=missing, input_value={}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.11/v/missing
+Tempo de execução: 47.64 segundos
+Uso de CPU: 1.00%
+Uso de memória: 786432.00 bytes
+Erro ao decodificar JSON: Expecting value: line 1 column 1 (char 0)
+[2025-07-22 09:18:05] [WARNING] - [RETRY CANDIDATO] Tentativa 2 falhou: 9 validation errors for CandidatoEstruturado
+principais_ferramentas_tecnologicas
+  Field required [type=missing, input_value={}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.11/v/missing
+ferramentas_tecnologicas
+  Field required [type=missing, input_value={}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.11/v/missing
+competencias_tecnicas
+  Field required [type=missing, input_value={}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.11/v/missing
+competencias_comportamentais
+  Field required [type=missing, input_value={}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.11/v/missing
+experiencia_anos
+  Field required [type=missing, input_value={}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.11/v/missing
+senioridade_aparente
+  Field required [type=missing, input_value={}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.11/v/missing
+formacao_academica
+  Field required [type=missing, input_value={}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.11/v/missing
+nivel_formacao
+  Field required [type=missing, input_value={}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.11/v/missing
+area_formacao
+  Field required [type=missing, input_value={}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.11/v/missing
+Tempo de execução: 49.21 segundos
+Uso de CPU: 1.00%
+Uso de memória: -3973120.00 bytes
+Erro ao decodificar JSON: Expecting value: line 1 column 1 (char 0)
+[2025-07-22 09:18:55] [WARNING] - [RETRY CANDIDATO] Tentativa 3 falhou: 9 validation errors for CandidatoEstruturado
+principais_ferramentas_tecnologicas
+  Field required [type=missing, input_value={}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.11/v/missing
+ferramentas_tecnologicas
+  Field required [type=missing, input_value={}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.11/v/missing
+competencias_tecnicas
+  Field required [type=missing, input_value={}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.11/v/missing
+competencias_comportamentais
+  Field required [type=missing, input_value={}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.11/v/missing
+experiencia_anos
+  Field required [type=missing, input_value={}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.11/v/missing
+senioridade_aparente
+  Field required [type=missing, input_value={}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.11/v/missing
+formacao_academica
+  Field required [type=missing, input_value={}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.11/v/missing
+nivel_formacao
+  Field required [type=missing, input_value={}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.11/v/missing
+area_formacao
+  Field required [type=missing, input_value={}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.11/v/missing
+[2025-07-22 09:18:55] [WARNING] - [LLM FALLBACK] Iniciando fallback com DeepSeek após 3 falhas com modelo primário.
+[2025-07-22 09:19:16] [INFO] - [OK CANDIDATO - DEEPSEEK] Validação bem-sucedida
+Processando registros: 100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████▎| 995/1000 [10:03:06<10:06, 121.30s/it]Tempo de execução: 48.13 segundos
+Uso de CPU: 0.20%
+Uso de memória: -6815744.00 bytes
+Erro ao decodificar JSON: Expecting value: line 1 column 1 (char 0)
+[2025-07-22 09:20:04] [WARNING] - [RETRY CANDIDATO] Tentativa 1 falhou: 9 validation errors for CandidatoEstruturado
+principais_ferramentas_tecnologicas
+  Field required [type=missing, input_value={}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.11/v/missing
+ferramentas_tecnologicas
+  Field required [type=missing, input_value={}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.11/v/missing
+competencias_tecnicas
+  Field required [type=missing, input_value={}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.11/v/missing
+competencias_comportamentais
+  Field required [type=missing, input_value={}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.11/v/missing
+experiencia_anos
+  Field required [type=missing, input_value={}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.11/v/missing
+senioridade_aparente
+  Field required [type=missing, input_value={}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.11/v/missing
+formacao_academica
+  Field required [type=missing, input_value={}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.11/v/missing
+nivel_formacao
+  Field required [type=missing, input_value={}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.11/v/missing
+area_formacao
+  Field required [type=missing, input_value={}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.11/v/missing
+Tempo de execução: 24.67 segundos
+Uso de CPU: 1.00%
+Uso de memória: -548864.00 bytes
+[2025-07-22 09:20:29] [INFO] - [OK CANDIDATO] Validação bem-sucedida na tentativa 2
+Processando registros: 100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████▍| 996/1000 [10:04:19<07:07, 106.82s/it]Tempo de execução: 47.08 segundos
+Uso de CPU: -17.40%
+Uso de memória: 2166784.00 bytes
+Erro ao decodificar JSON: Expecting value: line 1 column 1 (char 0)
+[2025-07-22 09:21:16] [WARNING] - [RETRY CANDIDATO] Tentativa 1 falhou: 9 validation errors for CandidatoEstruturado
+principais_ferramentas_tecnologicas
+  Field required [type=missing, input_value={}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.11/v/missing
+ferramentas_tecnologicas
+  Field required [type=missing, input_value={}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.11/v/missing
+competencias_tecnicas
+  Field required [type=missing, input_value={}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.11/v/missing
+competencias_comportamentais
+  Field required [type=missing, input_value={}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.11/v/missing
+experiencia_anos
+  Field required [type=missing, input_value={}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.11/v/missing
+senioridade_aparente
+  Field required [type=missing, input_value={}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.11/v/missing
+formacao_academica
+  Field required [type=missing, input_value={}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.11/v/missing
+nivel_formacao
+  Field required [type=missing, input_value={}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.11/v/missing
+area_formacao
+  Field required [type=missing, input_value={}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.11/v/missing
+Tempo de execução: 17.90 segundos
+Uso de CPU: 0.20%
+Uso de memória: -3620864.00 bytes
+[2025-07-22 09:21:34] [INFO] - [OK CANDIDATO] Validação bem-sucedida na tentativa 2
+Processando registros: 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████▌| 997/1000 [10:05:24<04:43, 94.35s/it]Tempo de execução: 15.53 segundos
+Uso de CPU: -16.40%
+Uso de memória: 2752512.00 bytes
+[2025-07-22 09:21:50] [INFO] - [OK CANDIDATO] Validação bem-sucedida na tentativa 1
+Processando registros: 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████▋| 998/1000 [10:05:40<02:21, 70.72s/it]Tempo de execução: 16.11 segundos
+Uso de CPU: -15.20%
+Uso de memória: -5419008.00 bytes
+[2025-07-22 09:22:06] [INFO] - [OK CANDIDATO] Validação bem-sucedida na tentativa 1
+Processando registros: 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████▊| 999/1000 [10:05:56<00:54, 54.35s/it]Tempo de execução: 11.44 segundos
+Uso de CPU: -16.70%
+Uso de memória: 9269248.00 bytes
+[2025-07-22 09:22:18] [INFO] - [OK VAGA] Validação bem-sucedida na tentativa 1
+Tempo de execução: 15.66 segundos
+Uso de CPU: 1.10%
+Uso de memória: -4747264.00 bytes
+[2025-07-22 09:22:33] [INFO] - [OK CANDIDATO] Validação bem-sucedida na tentativa 1
+Processando registros: 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1000/1000 [10:06:23<00:00, 36.38s/it]
+[2025-07-22 09:22:33] [INFO] - ✅ Processamento concluído
+[2025-07-22 09:22:33] [INFO] - → Dados salvos incrementalmente em: data/feature_store/resultado_final.parquet
+[2025-07-22 09:22:33] [INFO] - → Processamento finalizado com

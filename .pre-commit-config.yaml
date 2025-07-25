@@ -1,0 +1,46 @@
+repos:
+- repo: https://github.com/pre-commit/pre-commit-hooks
+  rev: v3.4.0
+  hooks:
+  - id: trailing-whitespace
+  - id: end-of-file-fixer
+    language_version: python3
+- repo: https://github.com/hhatto/autopep8
+  rev: v2.0.4
+  hooks:
+  - id: autopep8
+    name: Python Autopep8 Formatter
+# - repo: https://github.com/PyCQA/bandit
+#   rev: 1.7.0
+#   hooks:
+#     - id: bandit
+#       name: Python Bandit Security Checker
+#       args: ["--exclude", ".git,.venv"]
+# - repo: https://github.com/pre-commit/mirrors-mypy
+#   rev: v1.9.0
+#   hooks:
+#     - id: mypy
+#       name: MyPy Static Type Checker
+#       additional_dependencies:
+#         [
+#           types-toml,
+#           types-pkg_resources,
+#           types-chardet,
+#           types-appdirs,
+#           types-colorama,
+#           types-pyyaml,
+#           types-regex,
+#           types-tqdm,
+#         ]
+- repo: https://github.com/pycqa/doc8
+  rev: v1.1.1
+  hooks:
+  - id: doc8
+    name: Doc8 Documentation Checker
+    args: [ --file-encoding, utf8 ]
+    files: docs/.*\.rst$
+- repo: https://github.com/antonbabenko/pre-commit-terraform
+  rev: v1.77.1 # Substitua pela versão mais recente
+  hooks:
+  - id: terraform_fmt
+  - id: terraform_validate

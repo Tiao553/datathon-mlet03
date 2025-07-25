@@ -1,0 +1,52 @@
+from pydantic import BaseModel
+from typing import Optional
+
+
+class CuratedJobRecord(BaseModel):
+    codigo_vaga: str
+    # informacoes_basicas
+    ib_data_requicisao: Optional[str]
+    ib_limite_esperado_para_contratacao: Optional[str]
+    ib_titulo_vaga: Optional[str]
+    ib_vaga_sap: Optional[str]
+    ib_cliente: Optional[str]
+    ib_solicitante_cliente: Optional[str]
+    ib_empresa_divisao: Optional[str]
+    ib_requisitante: Optional[str]
+    ib_analista_responsavel: Optional[str]
+    ib_tipo_contratacao: Optional[str]
+    ib_prazo_contratacao: Optional[str]
+    ib_objetivo_vaga: Optional[str]
+    ib_prioridade_vaga: Optional[str]
+    ib_origem_vaga: Optional[str]
+    ib_superior_imediato: Optional[str]
+    ib_nome: Optional[str]
+    ib_telefone: Optional[str]
+    ib_data_inicial: Optional[str]
+    ib_data_final: Optional[str]
+    # perfil_vaga
+    pv_pais: Optional[str]
+    pv_estado: Optional[str]
+    pv_cidade: Optional[str]
+    pv_bairro: Optional[str]
+    pv_regiao: Optional[str]
+    pv_local_trabalho: Optional[str]
+    pv_vaga_especifica_para_pcd: Optional[str]
+    pv_faixa_etaria: Optional[str]
+    pv_horario_trabalho: Optional[str]
+    pv_nivel_profissional: Optional[str]
+    pv_nivel_academico: Optional[str]
+    pv_nivel_ingles: Optional[str]
+    pv_nivel_espanhol: Optional[str]
+    pv_outro_idioma: Optional[str]
+    pv_areas_atuacao: Optional[str]
+    pv_principais_atividades: Optional[str]
+    pv_competencia_tecnicas_e_comportamentais: Optional[str]
+    pv_demais_observacoes: Optional[str]
+    pv_viagens_requeridas: Optional[str]
+    pv_equipamentos_necessarios: Optional[str]
+    pv_habilidades_comportamentais_necessarias: Optional[str]
+    # beneficios
+    b_valor_venda: Optional[str]
+    b_valor_compra_1: Optional[str]
+    b_valor_compra_2: Optional[str]
