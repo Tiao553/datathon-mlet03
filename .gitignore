@@ -1,3 +1,11 @@
 data/curated
 data/raw
 data/feature_store
+__pycache__/
+*.pyc
+mlruns/
+model/
+data/output/
+.env
+.ipynb_checkpoints/
+
