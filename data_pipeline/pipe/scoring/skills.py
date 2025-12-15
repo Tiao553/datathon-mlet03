@@ -3,7 +3,7 @@ from sentence_transformers import SentenceTransformer, util
 from typing import List, Dict, Union
 
 class SkillsScorer:
-    def __init__(self, model_name: str = 'all-MiniLM-L6-v2'):
+    def __init__(self, model_name: str = 'paraphrase-multilingual-MiniLM-L12-v2'):
         self.model = SentenceTransformer(model_name)
         self.level_map = {
             'NENHUM': 0, 'BÁSICO': 1, 'INTERMEDIÁRIO': 2, 'AVANÇADO': 3, 'FLUENTE': 4, 'TÉCNICO': 1.5,

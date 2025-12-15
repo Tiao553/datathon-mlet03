@@ -11,7 +11,7 @@ sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '../../.
 from data_pipeline.pipe.transform.curated_transform import normalize_dataframe
 
 class BehavioralScorer:
-    def __init__(self, model_path: str = "model/artifacts/behavioral_model.pkl"):
+    def __init__(self, model_path: str = "models/artifacts/behavioral_model.pkl"):
         self.model_path = model_path
         self.model = None
         self._load_model()

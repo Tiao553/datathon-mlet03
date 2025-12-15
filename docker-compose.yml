@@ -54,7 +54,7 @@ services:
 
   # --- Main API ---
   api:
-    build: 
+    build:
       context: .
       dockerfile: Dockerfile
     container_name: recruitment_api
@@ -65,12 +65,12 @@ services:
       - LOGSTASH_HOST=logstash
       - LOGSTASH_PORT=50000
       # Point to local Ollama on host (Linux)
-      - OLLAMA_HOST=http://host.docker.internal:11434 
+      - OLLAMA_HOST=http://host.docker.internal:11434
     extra_hosts:
       - "host.docker.internal:host-gateway"
     volumes:
       - ./data:/app/data
-      - ./model:/app/model
+      - ./models:/app/models
       - ./data_pipeline:/app/data_pipeline # Mount for dev/reload
       - ./serving:/app/serving
     depends_on:

@@ -16,7 +16,7 @@ Em recrutamento, o número de candidatos "contratados" (classe positiva) é muit
 *   **Efeito**: O algoritmo ajusta automaticamente os pesos da função de perda (Loss Function), penalizando mais os erros na classe minoritária (contratados). Isso maximiza o Recall, garantindo que não percamos talentos promissores.
 
 ### 1.3 Análise de Importância das Features (Feature Importance)
-Baseado nos experimentos (`model/experiments/run_behavioral_exp.py`), as features mais impactantes foram:
+Baseado nos experimentos (`models/experiments/run_behavioral_exp.py`), as features mais impactantes foram:
 1.  **`sentimento_comentario_score`**: Crítica. Comentários positivos de triagens anteriores são o maior preditor de sucesso futuro.
 2.  **`percentual_perfil_completo`**: Candidatos que preenchem todo o perfil demonstram maior interesse/engajamento.
 3.  **`dias_desde_ultima_atualizacao`**: Candidatos "frescos" (recência) têm maior probabilidade de resposta.
