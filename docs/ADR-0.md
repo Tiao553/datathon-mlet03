@@ -1,10 +1,15 @@
 # ADR-0: Evolution to Advanced MLOps Platform & Zero-Shot Architecture
 
 > [!IMPORTANT]
-> **Status:** Proposed
-> **Date:** 2025-12-15
+> **Status:** In Progress (Phase 2 Complete)
+> **Date:** 2025-12-15 (Updated: 2025-12-16)
 > **Context:** Transitioning from a Prototype (Local/Rigid) to an Enterprise MLOps Platform (Cloud/Scalable).
 > **Driver:** Need to support infinite job variations without retraining (`job_id` bottleneck) and decouple infrastructure.
+>
+> **Progress:**
+> - ✅ Phase I: Infrastructure Decoupling (LLM Adapter Pattern) - **COMPLETE**
+> - ✅ Phase II: Observability (Airflow + Langfuse + Evidently) - **COMPLETE**
+> - 🔜 Phase III: Immutable Payload (Zero-Shot Learning) - **PLANNED**
 
 ---
 
@@ -12,19 +17,27 @@
 
 We define a 3-Phase evolution strategy to achieve operational maturity.
 
-| Phase | Focus | Key Deliverable | Tech Stack |
-| :--- | :--- | :--- | :--- |
-| **I** | **Decoupling** | **Adapter Pattern** for LLMs (Cloud Ready) | Python Protocols, `.env` Config |
-| **II** | **Observability** | **Drift Monitoring & Prompt Engineering** | **Langfuse**, **Airflow**, Docker |
-| **III** | **Scalability** | **Immutable Payload** (Zero-Shot) | Vector Embeddings, Schema Validation |
+| Phase | Focus | Key Deliverable | Tech Stack | Status |
+| :--- | :--- | :--- | :--- | :---: |
+| **I** | **Decoupling** | **Adapter Pattern** for LLMs (Cloud Ready) | Python Protocols, `.env` Config | ✅ |
+| **II** | **Observability** | **Drift Monitoring & Prompt Engineering** | **Langfuse**, **Airflow**, **Evidently AI** | ✅ |
+| **III** | **Scalability** | **Immutable Payload** (Zero-Shot) | Vector Embeddings, Schema Validation | 🔜 |
 
 ---
 
 ## Detailed Roadmap
 
-### Phase I: Infrastructure Decoupling (The Adapter)
+### Phase I: Infrastructure Decoupling (The Adapter) ✅ **COMPLETE**
+
 **Problem:** The API is hardcoded to `localhost:11434` (Ollama), making cloud deployment impossible without code changes.
+
 **Solution:** Implement the **Adapter Pattern** to switch between Local and Cloud providers dynamically.
+
+**Implementation:**
+- Created `data_pipeline/infra/llm_gateway.py` with `LLMProvider` protocol
+- Implemented `OllamaAdapter` and `DeepSeekAdapter`
+- Refactored `prompts.py` to use gateway
+- Added `.env` configuration support
 
 **Architecture:**
 ```python
@@ -47,12 +60,13 @@ def get_llm_service() -> LLMService:
 
 ---
 
-### Phase II: Continuous Evaluation & Prompt Management (LLMOps)
+### Phase II: Continuous Evaluation & Prompt Management (LLMOps) ✅ **COMPLETE**
+
 **Problem:**
 1.  **Drift:** We don't know if the model is degrading over time.
 2.  **Prompt Sprawl:** Prompts are hardcoded in string literals (`prompts.py`), making versioning and testing difficult.
 
-**Solution:** **Full LLMOps Stack (Airflow + Langfuse).**
+**Solution:** **Full LLMOps Stack (Airflow + Langfuse + Evidently AI).**
 
 **Implementation Strategy:**
 -   **Prompt Management (Langfuse):**
@@ -70,9 +84,19 @@ def get_llm_service() -> LLMService:
 
 **Why Docker?** Keeps the stack portable. Developers can run the exact monitoring stack locally before deploying to AWS ECS/Kubernetes.
 
+**Implementation Status:**
+- ✅ Airflow webserver + scheduler deployed (Docker Compose)
+- ✅ Custom Airflow Dockerfile with dependencies (polars, evidently, pandas)
+- ✅ `drift_monitoring_weekly` DAG created with Evidently AI
+- ✅ Drift detection utilities (`dags/utils/drift_detection.py`)
+- ✅ HTML report generation and threshold-based alerting
+- ⏸️ Langfuse service configured (DB ready, integration pending)
+- 🔜 Slack/Email alerting integration
+
 ---
 
-### Phase III: The Immutable Payload (Zero-Shot Design)
+### Phase III: The Immutable Payload (Zero-Shot Design) 🔜 **PLANNED**
+
 **Problem:** The current API relies on `job_id`.
 -   *New Job ID = Unknown Feature = Retraining Trigger.*
 -   This creates a "Red Queen Race" where we constantly retrain just to stay in place.

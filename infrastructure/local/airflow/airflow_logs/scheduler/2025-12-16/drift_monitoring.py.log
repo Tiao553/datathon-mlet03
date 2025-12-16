@@ -1,0 +1,508 @@
+[2025-12-16T17:12:25.738+0000] {processor.py:161} INFO - Started process (PID=162) to work on /opt/airflow/dags/drift_monitoring.py
+[2025-12-16T17:12:25.739+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/drift_monitoring.py for tasks to queue
+[2025-12-16T17:12:25.739+0000] {logging_mixin.py:188} INFO - [2025-12-16T17:12:25.739+0000] {dagbag.py:538} INFO - Filling up the DagBag from /opt/airflow/dags/drift_monitoring.py
+[2025-12-16T17:12:26.913+0000] {logging_mixin.py:188} INFO - [2025-12-16T17:12:26.911+0000] {dagbag.py:348} ERROR - Failed to import: /opt/airflow/dags/drift_monitoring.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/models/dagbag.py", line 344, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 883, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "/opt/airflow/dags/drift_monitoring.py", line 26, in <module>
+    from utils.drift_detection import (
+  File "/opt/airflow/dags/utils/drift_detection.py", line 9, in <module>
+    import polars as pl
+ModuleNotFoundError: No module named 'polars'
+[2025-12-16T17:12:26.914+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/drift_monitoring.py
+[2025-12-16T17:12:26.933+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/drift_monitoring.py took 1.198 seconds
+[2025-12-16T17:12:57.437+0000] {processor.py:161} INFO - Started process (PID=169) to work on /opt/airflow/dags/drift_monitoring.py
+[2025-12-16T17:12:57.439+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/drift_monitoring.py for tasks to queue
+[2025-12-16T17:12:57.440+0000] {logging_mixin.py:188} INFO - [2025-12-16T17:12:57.440+0000] {dagbag.py:538} INFO - Filling up the DagBag from /opt/airflow/dags/drift_monitoring.py
+[2025-12-16T17:12:57.673+0000] {logging_mixin.py:188} INFO - [2025-12-16T17:12:57.671+0000] {dagbag.py:348} ERROR - Failed to import: /opt/airflow/dags/drift_monitoring.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/models/dagbag.py", line 344, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 883, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "/opt/airflow/dags/drift_monitoring.py", line 26, in <module>
+    from utils.drift_detection import (
+  File "/opt/airflow/dags/utils/drift_detection.py", line 9, in <module>
+    import polars as pl
+ModuleNotFoundError: No module named 'polars'
+[2025-12-16T17:12:57.674+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/drift_monitoring.py
+[2025-12-16T17:12:57.695+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/drift_monitoring.py took 0.262 seconds
+[2025-12-16T17:13:28.253+0000] {processor.py:161} INFO - Started process (PID=175) to work on /opt/airflow/dags/drift_monitoring.py
+[2025-12-16T17:13:28.255+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/drift_monitoring.py for tasks to queue
+[2025-12-16T17:13:28.256+0000] {logging_mixin.py:188} INFO - [2025-12-16T17:13:28.256+0000] {dagbag.py:538} INFO - Filling up the DagBag from /opt/airflow/dags/drift_monitoring.py
+[2025-12-16T17:13:28.482+0000] {logging_mixin.py:188} INFO - [2025-12-16T17:13:28.479+0000] {dagbag.py:348} ERROR - Failed to import: /opt/airflow/dags/drift_monitoring.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/models/dagbag.py", line 344, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 883, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "/opt/airflow/dags/drift_monitoring.py", line 26, in <module>
+    from utils.drift_detection import (
+  File "/opt/airflow/dags/utils/drift_detection.py", line 9, in <module>
+    import polars as pl
+ModuleNotFoundError: No module named 'polars'
+[2025-12-16T17:13:28.482+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/drift_monitoring.py
+[2025-12-16T17:13:28.502+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/drift_monitoring.py took 0.253 seconds
+[2025-12-16T17:13:59.026+0000] {processor.py:161} INFO - Started process (PID=181) to work on /opt/airflow/dags/drift_monitoring.py
+[2025-12-16T17:13:59.028+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/drift_monitoring.py for tasks to queue
+[2025-12-16T17:13:59.029+0000] {logging_mixin.py:188} INFO - [2025-12-16T17:13:59.029+0000] {dagbag.py:538} INFO - Filling up the DagBag from /opt/airflow/dags/drift_monitoring.py
+[2025-12-16T17:13:59.258+0000] {logging_mixin.py:188} INFO - [2025-12-16T17:13:59.256+0000] {dagbag.py:348} ERROR - Failed to import: /opt/airflow/dags/drift_monitoring.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/models/dagbag.py", line 344, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 883, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "/opt/airflow/dags/drift_monitoring.py", line 26, in <module>
+    from utils.drift_detection import (
+  File "/opt/airflow/dags/utils/drift_detection.py", line 9, in <module>
+    import polars as pl
+ModuleNotFoundError: No module named 'polars'
+[2025-12-16T17:13:59.259+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/drift_monitoring.py
+[2025-12-16T17:13:59.277+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/drift_monitoring.py took 0.254 seconds
+[2025-12-16T17:14:29.847+0000] {processor.py:161} INFO - Started process (PID=187) to work on /opt/airflow/dags/drift_monitoring.py
+[2025-12-16T17:14:29.850+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/drift_monitoring.py for tasks to queue
+[2025-12-16T17:14:29.851+0000] {logging_mixin.py:188} INFO - [2025-12-16T17:14:29.850+0000] {dagbag.py:538} INFO - Filling up the DagBag from /opt/airflow/dags/drift_monitoring.py
+[2025-12-16T17:14:30.088+0000] {logging_mixin.py:188} INFO - [2025-12-16T17:14:30.085+0000] {dagbag.py:348} ERROR - Failed to import: /opt/airflow/dags/drift_monitoring.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/models/dagbag.py", line 344, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 883, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "/opt/airflow/dags/drift_monitoring.py", line 26, in <module>
+    from utils.drift_detection import (
+  File "/opt/airflow/dags/utils/drift_detection.py", line 9, in <module>
+    import polars as pl
+ModuleNotFoundError: No module named 'polars'
+[2025-12-16T17:14:30.089+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/drift_monitoring.py
+[2025-12-16T17:14:30.113+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/drift_monitoring.py took 0.269 seconds
+[2025-12-16T17:15:00.594+0000] {processor.py:161} INFO - Started process (PID=193) to work on /opt/airflow/dags/drift_monitoring.py
+[2025-12-16T17:15:00.595+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/drift_monitoring.py for tasks to queue
+[2025-12-16T17:15:00.596+0000] {logging_mixin.py:188} INFO - [2025-12-16T17:15:00.596+0000] {dagbag.py:538} INFO - Filling up the DagBag from /opt/airflow/dags/drift_monitoring.py
+[2025-12-16T17:14:58.340+0000] {logging_mixin.py:188} INFO - [2025-12-16T17:14:58.337+0000] {dagbag.py:348} ERROR - Failed to import: /opt/airflow/dags/drift_monitoring.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/models/dagbag.py", line 344, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 883, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "/opt/airflow/dags/drift_monitoring.py", line 26, in <module>
+    from utils.drift_detection import (
+  File "/opt/airflow/dags/utils/drift_detection.py", line 9, in <module>
+    import polars as pl
+ModuleNotFoundError: No module named 'polars'
+[2025-12-16T17:14:58.340+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/drift_monitoring.py
+[2025-12-16T17:14:58.361+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/drift_monitoring.py took 0.258 seconds
+[2025-12-16T17:15:28.393+0000] {processor.py:161} INFO - Started process (PID=199) to work on /opt/airflow/dags/drift_monitoring.py
+[2025-12-16T17:15:28.394+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/drift_monitoring.py for tasks to queue
+[2025-12-16T17:15:28.395+0000] {logging_mixin.py:188} INFO - [2025-12-16T17:15:28.395+0000] {dagbag.py:538} INFO - Filling up the DagBag from /opt/airflow/dags/drift_monitoring.py
+[2025-12-16T17:15:28.623+0000] {logging_mixin.py:188} INFO - [2025-12-16T17:15:28.621+0000] {dagbag.py:348} ERROR - Failed to import: /opt/airflow/dags/drift_monitoring.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/models/dagbag.py", line 344, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 883, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "/opt/airflow/dags/drift_monitoring.py", line 26, in <module>
+    from utils.drift_detection import (
+  File "/opt/airflow/dags/utils/drift_detection.py", line 9, in <module>
+    import polars as pl
+ModuleNotFoundError: No module named 'polars'
+[2025-12-16T17:15:28.623+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/drift_monitoring.py
+[2025-12-16T17:15:28.643+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/drift_monitoring.py took 0.254 seconds
+[2025-12-16T17:15:59.166+0000] {processor.py:161} INFO - Started process (PID=205) to work on /opt/airflow/dags/drift_monitoring.py
+[2025-12-16T17:15:59.167+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/drift_monitoring.py for tasks to queue
+[2025-12-16T17:15:59.168+0000] {logging_mixin.py:188} INFO - [2025-12-16T17:15:59.167+0000] {dagbag.py:538} INFO - Filling up the DagBag from /opt/airflow/dags/drift_monitoring.py
+[2025-12-16T17:15:59.395+0000] {logging_mixin.py:188} INFO - [2025-12-16T17:15:59.393+0000] {dagbag.py:348} ERROR - Failed to import: /opt/airflow/dags/drift_monitoring.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/models/dagbag.py", line 344, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 883, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "/opt/airflow/dags/drift_monitoring.py", line 26, in <module>
+    from utils.drift_detection import (
+  File "/opt/airflow/dags/utils/drift_detection.py", line 9, in <module>
+    import polars as pl
+ModuleNotFoundError: No module named 'polars'
+[2025-12-16T17:15:59.396+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/drift_monitoring.py
+[2025-12-16T17:15:59.415+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/drift_monitoring.py took 0.253 seconds
+[2025-12-16T17:16:29.987+0000] {processor.py:161} INFO - Started process (PID=211) to work on /opt/airflow/dags/drift_monitoring.py
+[2025-12-16T17:16:29.988+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/drift_monitoring.py for tasks to queue
+[2025-12-16T17:16:29.989+0000] {logging_mixin.py:188} INFO - [2025-12-16T17:16:29.989+0000] {dagbag.py:538} INFO - Filling up the DagBag from /opt/airflow/dags/drift_monitoring.py
+[2025-12-16T17:16:27.729+0000] {logging_mixin.py:188} INFO - [2025-12-16T17:16:27.726+0000] {dagbag.py:348} ERROR - Failed to import: /opt/airflow/dags/drift_monitoring.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/models/dagbag.py", line 344, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 883, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "/opt/airflow/dags/drift_monitoring.py", line 26, in <module>
+    from utils.drift_detection import (
+  File "/opt/airflow/dags/utils/drift_detection.py", line 9, in <module>
+    import polars as pl
+ModuleNotFoundError: No module named 'polars'
+[2025-12-16T17:16:27.729+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/drift_monitoring.py
+[2025-12-16T17:16:27.749+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/drift_monitoring.py took 0.252 seconds
+[2025-12-16T17:16:57.894+0000] {processor.py:161} INFO - Started process (PID=217) to work on /opt/airflow/dags/drift_monitoring.py
+[2025-12-16T17:16:57.896+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/drift_monitoring.py for tasks to queue
+[2025-12-16T17:16:57.897+0000] {logging_mixin.py:188} INFO - [2025-12-16T17:16:57.897+0000] {dagbag.py:538} INFO - Filling up the DagBag from /opt/airflow/dags/drift_monitoring.py
+[2025-12-16T17:16:58.128+0000] {logging_mixin.py:188} INFO - [2025-12-16T17:16:58.125+0000] {dagbag.py:348} ERROR - Failed to import: /opt/airflow/dags/drift_monitoring.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/models/dagbag.py", line 344, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 883, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "/opt/airflow/dags/drift_monitoring.py", line 26, in <module>
+    from utils.drift_detection import (
+  File "/opt/airflow/dags/utils/drift_detection.py", line 9, in <module>
+    import polars as pl
+ModuleNotFoundError: No module named 'polars'
+[2025-12-16T17:16:58.128+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/drift_monitoring.py
+[2025-12-16T17:16:58.149+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/drift_monitoring.py took 0.258 seconds
+[2025-12-16T17:17:28.561+0000] {processor.py:161} INFO - Started process (PID=223) to work on /opt/airflow/dags/drift_monitoring.py
+[2025-12-16T17:17:28.563+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/drift_monitoring.py for tasks to queue
+[2025-12-16T17:17:28.564+0000] {logging_mixin.py:188} INFO - [2025-12-16T17:17:28.563+0000] {dagbag.py:538} INFO - Filling up the DagBag from /opt/airflow/dags/drift_monitoring.py
+[2025-12-16T17:17:28.804+0000] {logging_mixin.py:188} INFO - [2025-12-16T17:17:28.801+0000] {dagbag.py:348} ERROR - Failed to import: /opt/airflow/dags/drift_monitoring.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/models/dagbag.py", line 344, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 883, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "/opt/airflow/dags/drift_monitoring.py", line 26, in <module>
+    from utils.drift_detection import (
+  File "/opt/airflow/dags/utils/drift_detection.py", line 9, in <module>
+    import polars as pl
+ModuleNotFoundError: No module named 'polars'
+[2025-12-16T17:17:28.804+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/drift_monitoring.py
+[2025-12-16T17:17:28.825+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/drift_monitoring.py took 0.268 seconds
+[2025-12-16T17:17:59.021+0000] {processor.py:161} INFO - Started process (PID=229) to work on /opt/airflow/dags/drift_monitoring.py
+[2025-12-16T17:17:59.022+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/drift_monitoring.py for tasks to queue
+[2025-12-16T17:17:59.023+0000] {logging_mixin.py:188} INFO - [2025-12-16T17:17:59.023+0000] {dagbag.py:538} INFO - Filling up the DagBag from /opt/airflow/dags/drift_monitoring.py
+[2025-12-16T17:17:59.244+0000] {logging_mixin.py:188} INFO - [2025-12-16T17:17:59.242+0000] {dagbag.py:348} ERROR - Failed to import: /opt/airflow/dags/drift_monitoring.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/models/dagbag.py", line 344, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 883, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "/opt/airflow/dags/drift_monitoring.py", line 26, in <module>
+    from utils.drift_detection import (
+  File "/opt/airflow/dags/utils/drift_detection.py", line 9, in <module>
+    import polars as pl
+ModuleNotFoundError: No module named 'polars'
+[2025-12-16T17:17:59.245+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/drift_monitoring.py
+[2025-12-16T17:17:59.265+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/drift_monitoring.py took 0.247 seconds
+[2025-12-16T17:18:29.702+0000] {processor.py:161} INFO - Started process (PID=235) to work on /opt/airflow/dags/drift_monitoring.py
+[2025-12-16T17:18:29.704+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/drift_monitoring.py for tasks to queue
+[2025-12-16T17:18:29.705+0000] {logging_mixin.py:188} INFO - [2025-12-16T17:18:29.704+0000] {dagbag.py:538} INFO - Filling up the DagBag from /opt/airflow/dags/drift_monitoring.py
+[2025-12-16T17:18:29.920+0000] {logging_mixin.py:188} INFO - [2025-12-16T17:18:29.917+0000] {dagbag.py:348} ERROR - Failed to import: /opt/airflow/dags/drift_monitoring.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/models/dagbag.py", line 344, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 883, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "/opt/airflow/dags/drift_monitoring.py", line 26, in <module>
+    from utils.drift_detection import (
+  File "/opt/airflow/dags/utils/drift_detection.py", line 9, in <module>
+    import polars as pl
+ModuleNotFoundError: No module named 'polars'
+[2025-12-16T17:18:29.920+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/drift_monitoring.py
+[2025-12-16T17:18:29.940+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/drift_monitoring.py took 0.242 seconds
+[2025-12-16T17:19:00.610+0000] {processor.py:161} INFO - Started process (PID=241) to work on /opt/airflow/dags/drift_monitoring.py
+[2025-12-16T17:19:00.613+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/drift_monitoring.py for tasks to queue
+[2025-12-16T17:19:00.614+0000] {logging_mixin.py:188} INFO - [2025-12-16T17:19:00.613+0000] {dagbag.py:538} INFO - Filling up the DagBag from /opt/airflow/dags/drift_monitoring.py
+[2025-12-16T17:19:00.830+0000] {logging_mixin.py:188} INFO - [2025-12-16T17:19:00.828+0000] {dagbag.py:348} ERROR - Failed to import: /opt/airflow/dags/drift_monitoring.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/models/dagbag.py", line 344, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 883, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "/opt/airflow/dags/drift_monitoring.py", line 26, in <module>
+    from utils.drift_detection import (
+  File "/opt/airflow/dags/utils/drift_detection.py", line 9, in <module>
+    import polars as pl
+ModuleNotFoundError: No module named 'polars'
+[2025-12-16T17:19:00.830+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/drift_monitoring.py
+[2025-12-16T17:19:00.850+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/drift_monitoring.py took 0.243 seconds
+[2025-12-16T17:19:31.322+0000] {processor.py:161} INFO - Started process (PID=247) to work on /opt/airflow/dags/drift_monitoring.py
+[2025-12-16T17:19:31.324+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/drift_monitoring.py for tasks to queue
+[2025-12-16T17:19:31.325+0000] {logging_mixin.py:188} INFO - [2025-12-16T17:19:31.324+0000] {dagbag.py:538} INFO - Filling up the DagBag from /opt/airflow/dags/drift_monitoring.py
+[2025-12-16T17:19:31.538+0000] {logging_mixin.py:188} INFO - [2025-12-16T17:19:31.536+0000] {dagbag.py:348} ERROR - Failed to import: /opt/airflow/dags/drift_monitoring.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/models/dagbag.py", line 344, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 883, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "/opt/airflow/dags/drift_monitoring.py", line 26, in <module>
+    from utils.drift_detection import (
+  File "/opt/airflow/dags/utils/drift_detection.py", line 9, in <module>
+    import polars as pl
+ModuleNotFoundError: No module named 'polars'
+[2025-12-16T17:19:31.539+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/drift_monitoring.py
+[2025-12-16T17:19:31.557+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/drift_monitoring.py took 0.239 seconds
+[2025-12-16T17:20:02.173+0000] {processor.py:161} INFO - Started process (PID=253) to work on /opt/airflow/dags/drift_monitoring.py
+[2025-12-16T17:20:02.175+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/drift_monitoring.py for tasks to queue
+[2025-12-16T17:20:02.176+0000] {logging_mixin.py:188} INFO - [2025-12-16T17:20:02.176+0000] {dagbag.py:538} INFO - Filling up the DagBag from /opt/airflow/dags/drift_monitoring.py
+[2025-12-16T17:20:02.392+0000] {logging_mixin.py:188} INFO - [2025-12-16T17:20:02.390+0000] {dagbag.py:348} ERROR - Failed to import: /opt/airflow/dags/drift_monitoring.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/models/dagbag.py", line 344, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 883, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "/opt/airflow/dags/drift_monitoring.py", line 26, in <module>
+    from utils.drift_detection import (
+  File "/opt/airflow/dags/utils/drift_detection.py", line 9, in <module>
+    import polars as pl
+ModuleNotFoundError: No module named 'polars'
+[2025-12-16T17:20:02.392+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/drift_monitoring.py
+[2025-12-16T17:20:02.411+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/drift_monitoring.py took 0.241 seconds
+[2025-12-16T17:20:32.922+0000] {processor.py:161} INFO - Started process (PID=259) to work on /opt/airflow/dags/drift_monitoring.py
+[2025-12-16T17:20:32.924+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/drift_monitoring.py for tasks to queue
+[2025-12-16T17:20:32.925+0000] {logging_mixin.py:188} INFO - [2025-12-16T17:20:32.925+0000] {dagbag.py:538} INFO - Filling up the DagBag from /opt/airflow/dags/drift_monitoring.py
+[2025-12-16T17:20:33.193+0000] {logging_mixin.py:188} INFO - [2025-12-16T17:20:33.190+0000] {dagbag.py:348} ERROR - Failed to import: /opt/airflow/dags/drift_monitoring.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/models/dagbag.py", line 344, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 883, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "/opt/airflow/dags/drift_monitoring.py", line 26, in <module>
+    from utils.drift_detection import (
+  File "/opt/airflow/dags/utils/drift_detection.py", line 9, in <module>
+    import polars as pl
+ModuleNotFoundError: No module named 'polars'
+[2025-12-16T17:20:33.194+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/drift_monitoring.py
+[2025-12-16T17:20:33.213+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/drift_monitoring.py took 0.297 seconds
+[2025-12-16T17:21:03.772+0000] {processor.py:161} INFO - Started process (PID=265) to work on /opt/airflow/dags/drift_monitoring.py
+[2025-12-16T17:21:03.774+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/drift_monitoring.py for tasks to queue
+[2025-12-16T17:21:03.775+0000] {logging_mixin.py:188} INFO - [2025-12-16T17:21:03.774+0000] {dagbag.py:538} INFO - Filling up the DagBag from /opt/airflow/dags/drift_monitoring.py
+[2025-12-16T17:21:04.021+0000] {logging_mixin.py:188} INFO - [2025-12-16T17:21:04.017+0000] {dagbag.py:348} ERROR - Failed to import: /opt/airflow/dags/drift_monitoring.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/models/dagbag.py", line 344, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 883, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "/opt/airflow/dags/drift_monitoring.py", line 26, in <module>
+    from utils.drift_detection import (
+  File "/opt/airflow/dags/utils/drift_detection.py", line 9, in <module>
+    import polars as pl
+ModuleNotFoundError: No module named 'polars'
+[2025-12-16T17:21:04.021+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/drift_monitoring.py
+[2025-12-16T17:21:04.046+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/drift_monitoring.py took 0.278 seconds
+[2025-12-16T17:21:34.553+0000] {processor.py:161} INFO - Started process (PID=271) to work on /opt/airflow/dags/drift_monitoring.py
+[2025-12-16T17:21:34.554+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/drift_monitoring.py for tasks to queue
+[2025-12-16T17:21:34.555+0000] {logging_mixin.py:188} INFO - [2025-12-16T17:21:34.555+0000] {dagbag.py:538} INFO - Filling up the DagBag from /opt/airflow/dags/drift_monitoring.py
+[2025-12-16T17:21:34.797+0000] {logging_mixin.py:188} INFO - [2025-12-16T17:21:34.795+0000] {dagbag.py:348} ERROR - Failed to import: /opt/airflow/dags/drift_monitoring.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/models/dagbag.py", line 344, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 883, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "/opt/airflow/dags/drift_monitoring.py", line 26, in <module>
+    from utils.drift_detection import (
+  File "/opt/airflow/dags/utils/drift_detection.py", line 9, in <module>
+    import polars as pl
+ModuleNotFoundError: No module named 'polars'
+[2025-12-16T17:21:34.798+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/drift_monitoring.py
+[2025-12-16T17:21:34.819+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/drift_monitoring.py took 0.271 seconds
+[2025-12-16T17:22:05.403+0000] {processor.py:161} INFO - Started process (PID=277) to work on /opt/airflow/dags/drift_monitoring.py
+[2025-12-16T17:22:05.405+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/drift_monitoring.py for tasks to queue
+[2025-12-16T17:22:05.406+0000] {logging_mixin.py:188} INFO - [2025-12-16T17:22:05.406+0000] {dagbag.py:538} INFO - Filling up the DagBag from /opt/airflow/dags/drift_monitoring.py
+[2025-12-16T17:22:05.640+0000] {logging_mixin.py:188} INFO - [2025-12-16T17:22:05.637+0000] {dagbag.py:348} ERROR - Failed to import: /opt/airflow/dags/drift_monitoring.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/models/dagbag.py", line 344, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 883, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "/opt/airflow/dags/drift_monitoring.py", line 26, in <module>
+    from utils.drift_detection import (
+  File "/opt/airflow/dags/utils/drift_detection.py", line 9, in <module>
+    import polars as pl
+ModuleNotFoundError: No module named 'polars'
+[2025-12-16T17:22:05.640+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/drift_monitoring.py
+[2025-12-16T17:22:05.662+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/drift_monitoring.py took 0.263 seconds
+[2025-12-16T17:22:36.179+0000] {processor.py:161} INFO - Started process (PID=283) to work on /opt/airflow/dags/drift_monitoring.py
+[2025-12-16T17:22:36.181+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/drift_monitoring.py for tasks to queue
+[2025-12-16T17:22:36.182+0000] {logging_mixin.py:188} INFO - [2025-12-16T17:22:36.181+0000] {dagbag.py:538} INFO - Filling up the DagBag from /opt/airflow/dags/drift_monitoring.py
+[2025-12-16T17:22:36.421+0000] {logging_mixin.py:188} INFO - [2025-12-16T17:22:36.418+0000] {dagbag.py:348} ERROR - Failed to import: /opt/airflow/dags/drift_monitoring.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/models/dagbag.py", line 344, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 883, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "/opt/airflow/dags/drift_monitoring.py", line 26, in <module>
+    from utils.drift_detection import (
+  File "/opt/airflow/dags/utils/drift_detection.py", line 9, in <module>
+    import polars as pl
+ModuleNotFoundError: No module named 'polars'
+[2025-12-16T17:22:36.421+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/drift_monitoring.py
+[2025-12-16T17:22:36.441+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/drift_monitoring.py took 0.266 seconds
+[2025-12-16T17:23:07.009+0000] {processor.py:161} INFO - Started process (PID=289) to work on /opt/airflow/dags/drift_monitoring.py
+[2025-12-16T17:23:07.010+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/drift_monitoring.py for tasks to queue
+[2025-12-16T17:23:07.010+0000] {logging_mixin.py:188} INFO - [2025-12-16T17:23:07.010+0000] {dagbag.py:538} INFO - Filling up the DagBag from /opt/airflow/dags/drift_monitoring.py
+[2025-12-16T17:23:07.241+0000] {logging_mixin.py:188} INFO - [2025-12-16T17:23:07.237+0000] {dagbag.py:348} ERROR - Failed to import: /opt/airflow/dags/drift_monitoring.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/models/dagbag.py", line 344, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 883, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "/opt/airflow/dags/drift_monitoring.py", line 26, in <module>
+    from utils.drift_detection import (
+  File "/opt/airflow/dags/utils/drift_detection.py", line 9, in <module>
+    import polars as pl
+ModuleNotFoundError: No module named 'polars'
+[2025-12-16T17:23:07.241+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/drift_monitoring.py
+[2025-12-16T17:23:07.265+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/drift_monitoring.py took 0.259 seconds
+[2025-12-16T17:23:37.787+0000] {processor.py:161} INFO - Started process (PID=295) to work on /opt/airflow/dags/drift_monitoring.py
+[2025-12-16T17:23:37.789+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/drift_monitoring.py for tasks to queue
+[2025-12-16T17:23:37.790+0000] {logging_mixin.py:188} INFO - [2025-12-16T17:23:37.790+0000] {dagbag.py:538} INFO - Filling up the DagBag from /opt/airflow/dags/drift_monitoring.py
+[2025-12-16T17:23:38.018+0000] {logging_mixin.py:188} INFO - [2025-12-16T17:23:38.016+0000] {dagbag.py:348} ERROR - Failed to import: /opt/airflow/dags/drift_monitoring.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/models/dagbag.py", line 344, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 883, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "/opt/airflow/dags/drift_monitoring.py", line 26, in <module>
+    from utils.drift_detection import (
+  File "/opt/airflow/dags/utils/drift_detection.py", line 9, in <module>
+    import polars as pl
+ModuleNotFoundError: No module named 'polars'
+[2025-12-16T17:23:38.019+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/drift_monitoring.py
+[2025-12-16T17:23:38.044+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/drift_monitoring.py took 0.261 seconds
+[2025-12-16T17:24:08.648+0000] {processor.py:161} INFO - Started process (PID=301) to work on /opt/airflow/dags/drift_monitoring.py
+[2025-12-16T17:24:08.650+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/drift_monitoring.py for tasks to queue
+[2025-12-16T17:24:08.651+0000] {logging_mixin.py:188} INFO - [2025-12-16T17:24:08.651+0000] {dagbag.py:538} INFO - Filling up the DagBag from /opt/airflow/dags/drift_monitoring.py
+[2025-12-16T17:24:08.880+0000] {logging_mixin.py:188} INFO - [2025-12-16T17:24:08.877+0000] {dagbag.py:348} ERROR - Failed to import: /opt/airflow/dags/drift_monitoring.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/models/dagbag.py", line 344, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 883, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "/opt/airflow/dags/drift_monitoring.py", line 26, in <module>
+    from utils.drift_detection import (
+  File "/opt/airflow/dags/utils/drift_detection.py", line 9, in <module>
+    import polars as pl
+ModuleNotFoundError: No module named 'polars'
+[2025-12-16T17:24:08.880+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/drift_monitoring.py
+[2025-12-16T17:24:08.901+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/drift_monitoring.py took 0.256 seconds
+[2025-12-16T17:24:39.401+0000] {processor.py:161} INFO - Started process (PID=307) to work on /opt/airflow/dags/drift_monitoring.py
+[2025-12-16T17:24:39.402+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/drift_monitoring.py for tasks to queue
+[2025-12-16T17:24:39.403+0000] {logging_mixin.py:188} INFO - [2025-12-16T17:24:39.402+0000] {dagbag.py:538} INFO - Filling up the DagBag from /opt/airflow/dags/drift_monitoring.py
+[2025-12-16T17:24:39.642+0000] {logging_mixin.py:188} INFO - [2025-12-16T17:24:39.640+0000] {dagbag.py:348} ERROR - Failed to import: /opt/airflow/dags/drift_monitoring.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/models/dagbag.py", line 344, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 883, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "/opt/airflow/dags/drift_monitoring.py", line 26, in <module>
+    from utils.drift_detection import (
+  File "/opt/airflow/dags/utils/drift_detection.py", line 9, in <module>
+    import polars as pl
+ModuleNotFoundError: No module named 'polars'
+[2025-12-16T17:24:39.642+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/drift_monitoring.py
+[2025-12-16T17:24:39.663+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/drift_monitoring.py took 0.266 seconds
+[2025-12-16T17:25:10.241+0000] {processor.py:161} INFO - Started process (PID=313) to work on /opt/airflow/dags/drift_monitoring.py
+[2025-12-16T17:25:10.243+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/drift_monitoring.py for tasks to queue
+[2025-12-16T17:25:10.244+0000] {logging_mixin.py:188} INFO - [2025-12-16T17:25:10.243+0000] {dagbag.py:538} INFO - Filling up the DagBag from /opt/airflow/dags/drift_monitoring.py
+[2025-12-16T17:25:10.481+0000] {logging_mixin.py:188} INFO - [2025-12-16T17:25:10.479+0000] {dagbag.py:348} ERROR - Failed to import: /opt/airflow/dags/drift_monitoring.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/models/dagbag.py", line 344, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 883, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "/opt/airflow/dags/drift_monitoring.py", line 26, in <module>
+    from utils.drift_detection import (
+  File "/opt/airflow/dags/utils/drift_detection.py", line 9, in <module>
+    import polars as pl
+ModuleNotFoundError: No module named 'polars'
+[2025-12-16T17:25:10.482+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/drift_monitoring.py
+[2025-12-16T17:25:10.502+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/drift_monitoring.py took 0.265 seconds
+[2025-12-16T17:25:41.027+0000] {processor.py:161} INFO - Started process (PID=319) to work on /opt/airflow/dags/drift_monitoring.py
+[2025-12-16T17:25:41.028+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/drift_monitoring.py for tasks to queue
+[2025-12-16T17:25:41.028+0000] {logging_mixin.py:188} INFO - [2025-12-16T17:25:41.028+0000] {dagbag.py:538} INFO - Filling up the DagBag from /opt/airflow/dags/drift_monitoring.py
+[2025-12-16T17:25:41.260+0000] {logging_mixin.py:188} INFO - [2025-12-16T17:25:41.258+0000] {dagbag.py:348} ERROR - Failed to import: /opt/airflow/dags/drift_monitoring.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/models/dagbag.py", line 344, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 883, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "/opt/airflow/dags/drift_monitoring.py", line 26, in <module>
+    from utils.drift_detection import (
+  File "/opt/airflow/dags/utils/drift_detection.py", line 9, in <module>
+    import polars as pl
+ModuleNotFoundError: No module named 'polars'
+[2025-12-16T17:25:41.261+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/drift_monitoring.py
+[2025-12-16T17:25:41.283+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/drift_monitoring.py took 0.260 seconds
+[2025-12-16T17:26:11.856+0000] {processor.py:161} INFO - Started process (PID=325) to work on /opt/airflow/dags/drift_monitoring.py
+[2025-12-16T17:26:11.857+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/drift_monitoring.py for tasks to queue
+[2025-12-16T17:26:11.858+0000] {logging_mixin.py:188} INFO - [2025-12-16T17:26:11.858+0000] {dagbag.py:538} INFO - Filling up the DagBag from /opt/airflow/dags/drift_monitoring.py
+[2025-12-16T17:26:12.144+0000] {logging_mixin.py:188} INFO - [2025-12-16T17:26:12.141+0000] {dagbag.py:348} ERROR - Failed to import: /opt/airflow/dags/drift_monitoring.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/models/dagbag.py", line 344, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 883, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "/opt/airflow/dags/drift_monitoring.py", line 26, in <module>
+    from utils.drift_detection import (
+  File "/opt/airflow/dags/utils/drift_detection.py", line 9, in <module>
+    import polars as pl
+ModuleNotFoundError: No module named 'polars'
+[2025-12-16T17:26:12.145+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/drift_monitoring.py
+[2025-12-16T17:26:12.169+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/drift_monitoring.py took 0.317 seconds
+[2025-12-16T17:26:42.632+0000] {processor.py:161} INFO - Started process (PID=331) to work on /opt/airflow/dags/drift_monitoring.py
+[2025-12-16T17:26:42.633+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/drift_monitoring.py for tasks to queue
+[2025-12-16T17:26:42.634+0000] {logging_mixin.py:188} INFO - [2025-12-16T17:26:42.634+0000] {dagbag.py:538} INFO - Filling up the DagBag from /opt/airflow/dags/drift_monitoring.py
+[2025-12-16T17:26:42.909+0000] {logging_mixin.py:188} INFO - [2025-12-16T17:26:42.907+0000] {dagbag.py:348} ERROR - Failed to import: /opt/airflow/dags/drift_monitoring.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/models/dagbag.py", line 344, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 883, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "/opt/airflow/dags/drift_monitoring.py", line 26, in <module>
+    from utils.drift_detection import (
+  File "/opt/airflow/dags/utils/drift_detection.py", line 9, in <module>
+    import polars as pl
+ModuleNotFoundError: No module named 'polars'
+[2025-12-16T17:26:42.910+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/drift_monitoring.py
+[2025-12-16T17:26:42.933+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/drift_monitoring.py took 0.306 seconds
+[2025-12-16T17:27:13.502+0000] {processor.py:161} INFO - Started process (PID=337) to work on /opt/airflow/dags/drift_monitoring.py
+[2025-12-16T17:27:13.504+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/drift_monitoring.py for tasks to queue
+[2025-12-16T17:27:13.505+0000] {logging_mixin.py:188} INFO - [2025-12-16T17:27:13.505+0000] {dagbag.py:538} INFO - Filling up the DagBag from /opt/airflow/dags/drift_monitoring.py
+[2025-12-16T17:27:13.759+0000] {logging_mixin.py:188} INFO - [2025-12-16T17:27:13.757+0000] {dagbag.py:348} ERROR - Failed to import: /opt/airflow/dags/drift_monitoring.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/models/dagbag.py", line 344, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 883, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "/opt/airflow/dags/drift_monitoring.py", line 26, in <module>
+    from utils.drift_detection import (
+  File "/opt/airflow/dags/utils/drift_detection.py", line 9, in <module>
+    import polars as pl
+ModuleNotFoundError: No module named 'polars'
+[2025-12-16T17:27:13.760+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/drift_monitoring.py
+[2025-12-16T17:27:13.782+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/drift_monitoring.py took 0.283 seconds
+[2025-12-16T17:27:47.774+0000] {processor.py:161} INFO - Started process (PID=162) to work on /opt/airflow/dags/drift_monitoring.py
+[2025-12-16T17:27:47.776+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/drift_monitoring.py for tasks to queue
+[2025-12-16T17:27:47.776+0000] {logging_mixin.py:188} INFO - [2025-12-16T17:27:47.776+0000] {dagbag.py:538} INFO - Filling up the DagBag from /opt/airflow/dags/drift_monitoring.py
+[2025-12-16T17:27:50.060+0000] {processor.py:840} INFO - DAG(s) 'drift_monitoring_weekly' retrieved from /opt/airflow/dags/drift_monitoring.py
+[2025-12-16T17:27:50.083+0000] {logging_mixin.py:188} INFO - [2025-12-16T17:27:50.083+0000] {dag.py:3033} INFO - Sync 1 DAGs
+[2025-12-16T17:27:50.104+0000] {logging_mixin.py:188} INFO - [2025-12-16T17:27:50.104+0000] {dag.py:3820} INFO - Setting next_dagrun for drift_monitoring_weekly to 2025-12-21T00:00:00+00:00, run_after=2025-12-28T00:00:00+00:00
+[2025-12-16T17:27:50.129+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/drift_monitoring.py took 2.359 seconds
+[2025-12-16T17:28:20.496+0000] {processor.py:161} INFO - Started process (PID=175) to work on /opt/airflow/dags/drift_monitoring.py
+[2025-12-16T17:28:20.498+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/drift_monitoring.py for tasks to queue
+[2025-12-16T17:28:20.499+0000] {logging_mixin.py:188} INFO - [2025-12-16T17:28:20.498+0000] {dagbag.py:538} INFO - Filling up the DagBag from /opt/airflow/dags/drift_monitoring.py
+[2025-12-16T17:28:22.449+0000] {processor.py:840} INFO - DAG(s) 'drift_monitoring_weekly' retrieved from /opt/airflow/dags/drift_monitoring.py
+[2025-12-16T17:28:22.635+0000] {logging_mixin.py:188} INFO - [2025-12-16T17:28:22.635+0000] {dag.py:3033} INFO - Sync 1 DAGs
+[2025-12-16T17:28:22.654+0000] {logging_mixin.py:188} INFO - [2025-12-16T17:28:22.654+0000] {dag.py:3820} INFO - Setting next_dagrun for drift_monitoring_weekly to 2025-12-21T00:00:00+00:00, run_after=2025-12-28T00:00:00+00:00
+[2025-12-16T17:28:22.670+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/drift_monitoring.py took 2.179 seconds
+[2025-12-16T17:28:53.159+0000] {processor.py:161} INFO - Started process (PID=187) to work on /opt/airflow/dags/drift_monitoring.py
+[2025-12-16T17:28:53.160+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/drift_monitoring.py for tasks to queue
+[2025-12-16T17:28:53.161+0000] {logging_mixin.py:188} INFO - [2025-12-16T17:28:53.161+0000] {dagbag.py:538} INFO - Filling up the DagBag from /opt/airflow/dags/drift_monitoring.py
+[2025-12-16T17:28:52.570+0000] {processor.py:840} INFO - DAG(s) 'drift_monitoring_weekly' retrieved from /opt/airflow/dags/drift_monitoring.py
+[2025-12-16T17:28:52.595+0000] {logging_mixin.py:188} INFO - [2025-12-16T17:28:52.594+0000] {dag.py:3033} INFO - Sync 1 DAGs
+[2025-12-16T17:28:52.614+0000] {logging_mixin.py:188} INFO - [2025-12-16T17:28:52.614+0000] {dag.py:3820} INFO - Setting next_dagrun for drift_monitoring_weekly to 2025-12-21T00:00:00+00:00, run_after=2025-12-28T00:00:00+00:00
+[2025-12-16T17:28:52.634+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/drift_monitoring.py took 1.965 seconds
+[2025-12-16T17:29:22.812+0000] {processor.py:161} INFO - Started process (PID=199) to work on /opt/airflow/dags/drift_monitoring.py
+[2025-12-16T17:29:22.814+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/drift_monitoring.py for tasks to queue
+[2025-12-16T17:29:22.815+0000] {logging_mixin.py:188} INFO - [2025-12-16T17:29:22.815+0000] {dagbag.py:538} INFO - Filling up the DagBag from /opt/airflow/dags/drift_monitoring.py
+[2025-12-16T17:29:22.182+0000] {processor.py:840} INFO - DAG(s) 'drift_monitoring_weekly' retrieved from /opt/airflow/dags/drift_monitoring.py
+[2025-12-16T17:29:22.203+0000] {logging_mixin.py:188} INFO - [2025-12-16T17:29:22.203+0000] {dag.py:3033} INFO - Sync 1 DAGs
+[2025-12-16T17:29:22.221+0000] {logging_mixin.py:188} INFO - [2025-12-16T17:29:22.221+0000] {dag.py:3820} INFO - Setting next_dagrun for drift_monitoring_weekly to 2025-12-21T00:00:00+00:00, run_after=2025-12-28T00:00:00+00:00
+[2025-12-16T17:29:22.236+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/drift_monitoring.py took 1.914 seconds
