@@ -1,129 +1,136 @@
-# ADR-0: Evolution to Advanced MLOps Platform & Zero-Shot Architecture
+# ADR-0: Evolução para Plataforma MLOps Avançada & Arquitetura Zero-Shot
 
 > [!IMPORTANT]
-> **Status:** In Progress (Phase 2 Complete)
-> **Date:** 2025-12-15 (Updated: 2025-12-16)
-> **Context:** Transitioning from a Prototype (Local/Rigid) to an Enterprise MLOps Platform (Cloud/Scalable).
-> **Driver:** Need to support infinite job variations without retraining (`job_id` bottleneck) and decouple infrastructure.
+> **Status:** Em Andamento (Fase 2 Completa)
+> **Data:** 15-12-2025 (Atualizado: 16-12-2025)
+> **Contexto:** Transição de um Protótipo (Local/Rígido) para uma Plataforma MLOps Empresarial (Cloud/Escalável).
+> **Driver:** Necessidade de suportar infinitas variações de vagas sem retreinamento (gargalo do `job_id`) e desacoplar a infraestrutura.
 >
-> **Progress:**
-> - ✅ Phase I: Infrastructure Decoupling (LLM Adapter Pattern) - **COMPLETE**
-> - ✅ Phase II: Observability (Airflow + Langfuse + Evidently) - **COMPLETE**
-> - 🔜 Phase III: Immutable Payload (Zero-Shot Learning) - **PLANNED**
+> **Progresso:**
+>
+> - ✅ Fase I: Desacoplamento de Infraestrutura (Padrão Adapter para LLM) - **CONCLUÍDO**
+> - ✅ Fase II: Observabilidade (Airflow + Langfuse + Evidently) - **CONCLUÍDO**
+> - ✅ Fase III: Payload Imutável (Aprendizado Zero-Shot) - **PROJETADO** (Ver `docs/phase3_payload_schema.md`)
 
 ---
 
-## 1. Executive Roadmap
+## 1. Roadmap Executivo
 
-We define a 3-Phase evolution strategy to achieve operational maturity.
+Definimos uma estratégia de evolução em 3 fases para atingir a maturidade operacional.
 
-| Phase | Focus | Key Deliverable | Tech Stack | Status |
+| Fase | Foco | Principal Entregável | Tech Stack | Status |
 | :--- | :--- | :--- | :--- | :---: |
-| **I** | **Decoupling** | **Adapter Pattern** for LLMs (Cloud Ready) | Python Protocols, `.env` Config | ✅ |
-| **II** | **Observability** | **Drift Monitoring & Prompt Engineering** | **Langfuse**, **Airflow**, **Evidently AI** | ✅ |
-| **III** | **Scalability** | **Immutable Payload** (Zero-Shot) | Vector Embeddings, Schema Validation | 🔜 |
+| **I** | **Desacoplamento** | **Padrão Adapter** para LLMs (Pronto para Cloud) | Protocolos Python, Config `.env` | ✅ |
+| **II** | **Observabilidade** | **Monitoramento de Drift & Engenharia de Prompt** | **Langfuse**, **Airflow**, **Evidently AI** | ✅ |
+| **III** | **Escalabilidade** | **Payload Imutável** (Zero-Shot) | Embeddings Vetoriais, Validação de Schema | 🔜 |
 
 ---
 
-## Detailed Roadmap
+## Detalhamento do Roadmap
 
-### Phase I: Infrastructure Decoupling (The Adapter) ✅ **COMPLETE**
+### Fase I: Desacoplamento de Infraestrutura (O Adapter) ✅ **CONCLUÍDO**
 
-**Problem:** The API is hardcoded to `localhost:11434` (Ollama), making cloud deployment impossible without code changes.
+**Problema:** A API estava hardcoded para `localhost:11434` (Ollama), impossibilitando o deploy em nuvem sem alterações no código.
 
-**Solution:** Implement the **Adapter Pattern** to switch between Local and Cloud providers dynamically.
+**Solução:** Implementar o **Padrão Adapter** para alternar entre provedores Local e Cloud dinamicamente.
 
-**Implementation:**
-- Created `data_pipeline/infra/llm_gateway.py` with `LLMProvider` protocol
-- Implemented `OllamaAdapter` and `DeepSeekAdapter`
-- Refactored `prompts.py` to use gateway
-- Added `.env` configuration support
+**Implementação:**
 
-**Architecture:**
+- Criado `data_pipeline/infra/llm_gateway.py` com protocolo `LLMProvider`
+- Implementados `OllamaAdapter` e `DeepSeekAdapter`
+- Refatorado `prompts.py` para usar o gateway
+- Adicionado suporte a configuração via `.env`
+
+**Arquitetura:**
+
 ```python
-# Protocol Definition
+# Definição do Protocolo
 class LLMService(Protocol):
     def generate(self, prompt: str) -> str: ...
 
-# Adapter A: Local Development (Cost $0)
+# Adapter A: Desenvolvimento Local (Custo R$0)
 class OllamaAdapter:
     def generate(self, prompt: str): return requests.post("http://ollama:11434/...")
 
-# Adapter B: Production (High Availability)
+# Adapter B: Produção (Alta Disponibilidade)
 class DeepSeekAdapter:
     def generate(self, prompt: str): return client.chat.completions.create(...)
 
-# Injection
+# Injeção
 def get_llm_service() -> LLMService:
     return OllamaAdapter() if os.getenv("ENV") == "DEV" else DeepSeekAdapter()
 ```
 
 ---
 
-### Phase II: Continuous Evaluation & Prompt Management (LLMOps) ✅ **COMPLETE**
+### Fase II: Avaliação Contínua & Gerenciamento de Prompt (LLMOps) ✅ **CONCLUÍDO**
 
-**Problem:**
-1.  **Drift:** We don't know if the model is degrading over time.
-2.  **Prompt Sprawl:** Prompts are hardcoded in string literals (`prompts.py`), making versioning and testing difficult.
+**Problema:**
 
-**Solution:** **Full LLMOps Stack (Airflow + Langfuse + Evidently AI).**
+1. **Drift:** Não sabemos se o modelo está degradando ao longo do tempo.
+2. **Proliferação de Prompts:** Prompts hardcoded em strings (`prompts.py`), dificultando versionamento e testes.
 
-**Implementation Strategy:**
--   **Prompt Management (Langfuse):**
-    -   Move hardcoded strings to Langfuse CMS.
-    -   Track Prompt Versions (v1 vs v2).
-    -   Trace execution cost and latency per call.
-    -   Add `langfuse` container to `docker-compose.yml`.
--   **Drift Pipeline (Airflow):**
-    -   **Deployment:** Add `airflow-webserver` and `airflow-scheduler` services to `docker-compose.yml`.
-    -   **Frequency:** Weekly (`@weekly` DAG).
-    -   **Workload:**
-        1.  **Extract:** Pull last 7 days of inference logs.
-        2.  **Compute Metrics:** PSI (Population Stability), Embedding Drift.
-        3.  **Alert:** Slack/Email notification if `Drift_Score > 0.15`.
+**Solução:** **Stack Completa de LLMOps (Airflow + Langfuse + Evidently AI).**
 
-**Why Docker?** Keeps the stack portable. Developers can run the exact monitoring stack locally before deploying to AWS ECS/Kubernetes.
+**Estratégia de Implementação:**
 
-**Implementation Status:**
-- ✅ Airflow webserver + scheduler deployed (Docker Compose)
-- ✅ Custom Airflow Dockerfile with dependencies (polars, evidently, pandas)
-- ✅ `drift_monitoring_weekly` DAG created with Evidently AI
-- ✅ Drift detection utilities (`dags/utils/drift_detection.py`)
-- ✅ HTML report generation and threshold-based alerting
-- ⏸️ Langfuse service configured (DB ready, integration pending)
-- 🔜 Slack/Email alerting integration
+- **Gerenciamento de Prompt (Langfuse):**
+  - Mover strings hardcoded para o CMS do Langfuse.
+  - Rastrear Versões de Prompt (v1 vs v2).
+  - Tracejar custo de execução e latência por chamada.
+  - Adicionar container `langfuse` ao `docker-compose.yml`.
+- **Pipeline de Drift (Airflow):**
+  - **Deploy:** Adicionar serviços `airflow-webserver` e `airflow-scheduler` ao `docker-compose.yml`.
+  - **Frequência:** Semanal (DAG `@weekly`).
+  - **Carga de Trabalho:**
+        1. **Extrair:** Puxar logs de inferência dos últimos 7 dias.
+        2. **Calcular Métricas:** PSI (Estabilidade Populacional), Drift de Embeddings.
+        3. **Alertar:** Notificação Slack/Email se `Drift_Score > 0.15`.
+
+**Por que Docker?** Mantém a stack portátil. Desenvolvedores podem rodar a stack exata de monitoramento localmente antes de fazer deploy para AWS ECS/Kubernetes.
+
+**Status da Implementação:**
+
+- ✅ Airflow webserver + scheduler deployados (Docker Compose)
+- ✅ Dockerfile customizado do Airflow com dependências (polars, evidently, pandas)
+- ✅ DAG `drift_monitoring_weekly` criada com Evidently AI
+- ✅ Utilitários de detecção de drift (`dags/utils/drift_detection.py`)
+- ✅ Geração de relatório HTML e alertas baseados em limiares
+- ⏸️ Serviço Langfuse configurado (DB pronto, integração pendente)
+- 🔜 Integração de alertas Slack/Email
 
 ---
 
-### Phase III: The Immutable Payload (Zero-Shot Design) 🔜 **PLANNED**
+### Fase III: O Payload Imutável (Design Zero-Shot) 🔜 **PLANEJADO**
 
-**Problem:** The current API relies on `job_id`.
--   *New Job ID = Unknown Feature = Retraining Trigger.*
--   This creates a "Red Queen Race" where we constantly retrain just to stay in place.
+**Problema:** A API atual depende de `job_id`.
 
-**Solution:** **Immutable Input Schema.**
-We expand the API payload to accept *concepts*, not *keys*. The model scores "Data vs Data", not "Data vs ID".
+- *Novo Job ID = Feature Desconhecida = Gatilho de Retreinamento.*
+- Isso cria uma "Corrida da Rainha Vermelha" onde constantemente retreinamos apenas para permanecer no lugar.
 
-Based on our Feature Engineering Analysis (`docs/feature_engineering_analysis.md`), we require **~30 signals** to fully capture the context without retraining.
+**Solução:** **Schema de Input Imutável.**
+Expandimos o payload da API para aceitar *conceitos*, não *chaves*. O modelo pontua "Dados vs Dados", não "Dados vs ID".
 
-**Proposed API Schema (Version 2.0):**
-No matter how many new jobs are created, this payload structure **never changes**.
+Baseado em nossa Análise de Engenharia de Features (`docs/feature_engineering_analysis.md`), precisamos de **~30 sinais** para capturar totalmente o contexto sem retreinamento.
+
+**Schema de API Proposto (Versão 2.0):**
+Não importa quantas novas vagas sejam criadas, essa estrutura de payload **nunca muda**.
 
 ```json
 {
   "request_id": "req_123456",
   "candidate": {
     "profile": {
-      "resume_text": "Experienced Python Dev...",
+      "resume_text": "Desenvolvedor Python Experiente...",
       "years_experience_range": "5-8_years",
-      "seniority_inferred": "senior",  // Derived from LLM
+      "seniority_inferred": "senior",  // Derivado de LLM
       "education_level": "bachelors",
       "field_of_study": "computer_science",
       "has_degree": true
     },
     "skills": {
       "technical_skills": ["python", "pytorch", "fastapi", "docker"],
-      "soft_skills": ["mentoring", "communication", "adaptability"],
+      "soft_skills": ["mentoria", "comunicacao", "adaptabilidade"],
       "tools": ["jira", "slack", "aws_ec2"]
     },
     "quality_signals": {
@@ -132,22 +139,22 @@ No matter how many new jobs are created, this payload structure **never changes*
       "has_linkedin": true,
       "has_address": true,
       "completeness_score": 0.95,
-      "is_local_to_job": true  // Computed fuzzy match
+      "is_local_to_job": true  // Match fuzzy computado
     },
     "embeddings": {
-       "semantic_vector": [0.12, -0.98, ..., 0.44] // Optional: optimized client-side or computed server-side
+       "semantic_vector": [0.12, -0.98, ..., 0.44] // Opcional: otimizado no client-side ou computado no server-side
     }
   },
   "job_context": {
     "metadata": {
-        "job_title": "Senior MLOps Engineer",
-        "department": "Engineering",
-        "recruiter_id": "rec_09", // Handled as "Other" if low cardinality
+        "job_title": "Engenheiro MLOps Senior",
+        "department": "Engenharia",
+        "recruiter_id": "rec_09", // Tratado como "Outros" se baixa cardinalidade
         "days_since_opening": 12
     },
     "requirements": {
         "required_tech_skills": ["python", "kubernetes"],
-        "required_soft_skills": ["problem_solving"],
+        "required_soft_skills": ["resolucao_problemas"],
         "target_seniority": "senior"
     },
     "embeddings": {
@@ -157,16 +164,17 @@ No matter how many new jobs are created, this payload structure **never changes*
 }
 ```
 
-**Outcome:**
--   **Zero-Shot:** The model calculates `Similarity(candidate.vector, job.vector)` and `Match(candidate.skills, job.requirements)`.
--   **Robustness:** Features like `is_local_to_job` and `completeness_score` are universally applicable, regardless of the unique Job ID.
--   **No Retraining:** New jobs are just new data points in the same feature space. The processing logic remains constant.
+**Resultado:**
+
+- **Zero-Shot:** O modelo calcula `Similaridade(candidate.vector, job.vector)` e `Match(candidate.skills, job.requirements)`.
+- **Robustez:** Features como `is_local_to_job` e `completeness_score` são universalmente aplicáveis, independente do Job ID único.
+- **Sem Retreinamento:** Novas vagas são apenas novos pontos de dados no mesmo espaço de features. A lógica de processamento permanece constante.
 
 ---
 
-## 3. Financial & Operational ROI
+## 3. ROI Financeiro & Operacional
 
-| architecture | Cost/10k Reqs | MLOps Effort | Scalability |
+| arquitetura | Custo/10k Reqs | Esforço MLOps | Escalabilidade |
 | :--- | :--- | :--- | :--- |
-| **Current (Local/ID)** | $400/mo (GPU) | High (Manual Retraining) | Low (Failed on new IDs) |
-| **Target (Cloud/Zero-Shot)** | $30/mo (API) | **Zero** (No Retraining) | **Infinite** (Any new job works) |
+| **Atual (Local/ID)** | $400/mês (GPU) | Alto (Retreinamento Manual) | Baixa (Falha em novos IDs) |
+| **Alvo (Cloud/Zero-Shot)** | $30/mês (API) | **Zero** (Sem Retreinamento) | **Infinita** (Qualquer nova vaga funciona) |

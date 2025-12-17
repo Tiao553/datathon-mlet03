@@ -45,7 +45,7 @@ dag = DAG(
     'drift_monitoring_weekly',
     default_args=default_args,
     description='Weekly drift monitoring using Evidently AI',
-    schedule_interval='@weekly',  # Runs every Sunday at midnight
+    schedule_interval='@daily',  # Runs every day at midnight
     start_date=datetime(2025, 12, 15),
     catchup=False,
     tags=['monitoring', 'drift', 'mlops', 'evidently'],

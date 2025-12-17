@@ -59,16 +59,19 @@ Desenvolver uma solução baseada em IA para automatizar e aprimorar o processo 
 A solução contempla uma **plataforma MLOps completa** com:
 
 ### Core ML Pipeline
+
 - **Pipeline completo de Machine Learning**: feature engineering, pré-processamento, treinamento, validação e salvamento do modelo
 - **Ensemble de modelos**: Skills Scorer, Cultural Scorer, Behavioral Scorer
 - **LLM-based extraction**: Análise de currículos e descrições de vagas usando Ollama/DeepSeek
 
 ### Deployment & Serving
+
 - **API FastAPI**: endpoint `/predict` para scoring de candidatos
 - **Docker Compose**: stack completo com 9+ serviços
 - **LLM Adapter Pattern**: Suporte para LLMs locais (Ollama) e cloud (DeepSeek)
 
 ### MLOps & Observability
+
 - **Apache Airflow**: Orquestração de DAGs para drift monitoring
 - **Evidently AI**: Detecção automática de drift de dados
 - **MLflow**: Tracking de experimentos e modelos
@@ -110,11 +113,21 @@ graph LR
 ### Decisões Arquiteturais
 
 Consulte **[ADR-0: Architecture Evolution](docs/ADR-0.md)** para detalhes sobre:
+
 - ✅ **Fase 1**: LLM Adapter Pattern (Decoupling) - **COMPLETA**
 - ✅ **Fase 2**: Drift Monitoring (Airflow + Evidently) - **COMPLETA**
 - 🔜 **Fase 3**: Immutable Payload (Zero-Shot Learning) - **PLANEJADA**
 
 ---
+
+---
+
+## ⚠️ Dependências Críticas
+
+> [!IMPORTANT]
+> **Cadastro de Vagas (job_id)**: Para o correto funcionamento do scoring, é **imprescindível** que os `job_id`s consultados estejam previamente cadastrados e processados na base de dados (Feature Store).
+>
+> **Retreino de Modelos**: A performance do modelo depende da atualização constante dos dados. É **necessário** que o DAG de retreino (`weekly_retraining`) seja executado semanalmente para incorporar novas vagas e perfis ao espaço vetorial e aos modelos comportamentais.
 
 ## 🚀 Quick Start
 
@@ -172,17 +185,17 @@ curl -X POST http://localhost:8000/predict \
 
 | Serviço | Porta | URL | Credenciais | Descrição |
 |---------|-------|-----|-------------|-----------|
-| **API** | 8000 | http://localhost:8000 | - | Endpoint de scoring |
-| **MLflow** | 5000 | http://localhost:5000 | - | Tracking de experimentos |
-| **Kibana** | 5601 | http://localhost:5601 | - | Visualização de logs |
-| **Elasticsearch** | 9200 | http://localhost:9200 | - | Armazenamento de logs |
+| **API** | 8000 | <http://localhost:8000> | - | Endpoint de scoring |
+| **MLflow** | 5000 | <http://localhost:5000> | - | Tracking de experimentos |
+| **Kibana** | 5601 | <http://localhost:5601> | - | Visualização de logs |
+| **Elasticsearch** | 9200 | <http://localhost:9200> | - | Armazenamento de logs |
 
 ### Serviços MLOps
 
 | Serviço | Porta | URL | Credenciais | Descrição |
 |---------|-------|-----|-------------|-----------|
-| **Airflow** | 8080 | http://localhost:8080 | admin / admin | UI de gerenciamento de DAGs |
-| **Langfuse** | 3000 | http://localhost:3000 | (setup necessário) | Gestão de prompts LLM |
+| **Airflow** | 8080 | <http://localhost:8080> | admin / admin | UI de gerenciamento de DAGs |
+| **Langfuse** | 3000 | <http://localhost:3000> | (setup necessário) | Gestão de prompts LLM |
 
 ---
 
@@ -278,22 +291,26 @@ datathon-mlet03/
 ## Tecnologias Utilizadas
 
 ### Core ML Stack
+
 - Python 3.10
 - Pandas, NumPy, Polars
 - Scikit-learn, LightGBM
 - Sentence Transformers
 
 ### LLM & AI
+
 - Ollama (local)
 - DeepSeek API (cloud)
 - OpenAI SDK
 
 ### API & Serving
+
 - FastAPI
 - Uvicorn
 - Pydantic
 
 ### MLOps & Observability
+
 - **Apache Airflow** 2.8.0 - Orquestração
 - **Evidently AI** 0.4.30 - Drift detection
 - **MLflow** 2.8.1 - Experiment tracking
@@ -303,6 +320,7 @@ datathon-mlet03/
 - **Kibana** 7.17.13 - Log visualization
 
 ### Infrastructure
+
 - Docker & Docker Compose
 - PostgreSQL (Airflow, Langfuse)
 
@@ -316,10 +334,12 @@ datathon-mlet03/
 **Solução:** Adapter Pattern com interface `LLMProvider`
 
 **Arquivos:**
+
 - `data_pipeline/infra/llm_gateway.py`
 - `data_pipeline/pipe/features/prompts.py`
 
 **Uso:**
+
 ```python
 from data_pipeline.infra.llm_gateway import get_llm_provider
 
@@ -332,6 +352,7 @@ response = provider.generate(prompt)
 **Ferramentas:** Apache Airflow + Evidently AI
 
 **DAG:** `drift_monitoring_weekly`
+
 - **Agendamento:** Todo domingo à meia-noite
 - **Tarefas:**
   1. `check_data_drift` - Análise com Evidently AI
@@ -347,6 +368,7 @@ response = provider.generate(prompt)
 **Objetivo:** Zero-shot learning para novos jobs
 
 **Design:** Expandir payload da API de 3 para ~30 campos:
+
 - Perfil do candidato (senioridade, educação, experiência)
 - Skills (técnicas, soft, ferramentas)
 - Sinais de qualidade (completude, localidade)
@@ -440,7 +462,7 @@ curl -X POST http://localhost:8000/predict \
 
 ### Acessando Airflow
 
-1. Acesse http://localhost:8080
+1. Acesse <http://localhost:8080>
 2. Login: `admin` / `admin`
 3. Desative pausa na DAG `drift_monitoring_weekly`
 4. Clique em "Trigger DAG" para executar manualmente
@@ -453,12 +475,12 @@ curl -X POST http://localhost:8000/predict \
 
 - **API Logs:** `docker-compose logs api`
 - **Airflow Logs:** `infrastructure/local/airflow/airflow_logs/`
-- **Elasticsearch:** http://localhost:9200
-- **Kibana:** http://localhost:5601
+- **Elasticsearch:** <http://localhost:9200>
+- **Kibana:** <http://localhost:5601>
 
 ### Métricas
 
-- **MLflow:** http://localhost:5000 - Tracking de experimentos
+- **MLflow:** <http://localhost:5000> - Tracking de experimentos
 - **Relatórios de Drift:** Gerados semanalmente pelo Airflow
 
 ### Testes Unitários
@@ -476,7 +498,7 @@ python test_drift_detection.py
 ## Entregáveis
 
 1. ✅ Código-fonte organizado e documentado neste repositório
-2. ✅ API de predição rodando em http://localhost:8000
+2. ✅ API de predição rodando em <http://localhost:8000>
 3. ✅ Vídeo de até 5 minutos explicando a estratégia ([link no topo](https://youtu.be/v03U9tBDizg))
 4. ✅ Stack MLOps completo com Airflow, MLflow, ELK
 5. ✅ Documentação técnica abrangente
