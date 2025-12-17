@@ -1,0 +1,6 @@
+# Dependencies for Airflow DAGs
+pandas==2.1.3
+polars==0.19.19
+evidently==0.4.30
+requests==2.32.3
+numpy==1.26.2

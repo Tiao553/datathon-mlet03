@@ -1,11 +1,13 @@
 
-import requests
-import json
 import time
-import psutil
-import time
-from openai import OpenAI
 import os
+import sys
+
+# Add project root to path if needed (though usually handled by execution context)
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '../../../')))
+
+# Import the new Infrastructure Gateway
+from data_pipeline.infra.llm_gateway import get_llm_provider
 
 ###########################################################
 # Prompt Functions
@@ -124,42 +126,23 @@ Regras:
 - GARANTA que o JSON esteja completo e siga o modelo fornecido.
 """.strip()
 
-# Função para análise do currículo via Ollama API
+# Função para análise do currículo via LLM Gateway (Adapter Pattern)
 
 
-def chamar_llm(prompt, model_name="gemma3:4b"):
-    start_time = time.time()
-    cpu_before = psutil.cpu_percent(interval=None)
-    mem_before = psutil.virtual_memory().used
-
-    payload = {
-        "model": model_name,
-        "prompt": prompt,
-        "stream": False,
-        "options":  {
-            "num_predict": 1536,        # menor contexto ajuda a manter foco
-            "temperature": 0.1,        # zero = determinístico
-            "top_p": 0.8,              # restringe variedade
-        }
-    }
-
-    response = requests.post(
-        "http://localhost:11434/api/generate",
-        headers={"Content-Type": "application/json"},
-        data=json.dumps(payload)
-    )
-
-    cpu_after = psutil.cpu_percent(interval=None)
-    mem_after = psutil.virtual_memory().used
-    exec_time = time.time() - start_time
-
-    print(f"Tempo de execução: {exec_time:.2f} segundos")
-    print(f"Uso de CPU: {cpu_after - cpu_before:.2f}%")
-    print(f"Uso de memória: {mem_after - mem_before:.2f} bytes")
-
-    result_json = response.json()
-
-    return result_json.get('response', '').strip()
+def chamar_llm(prompt, model_name=None):
+    """
+    Chama o LLM através do Gateway configurado.
+    O gateway decide se usa Ollama (Local) ou DeepSeek (Cloud) baseado em env vars.
+    """
+    provider = get_llm_provider()
+    
+    # Se model_name não for passado, o adapter usa o default do env ou da classe
+    # Se for passado (como 'gemma3:4b'), o adapter tenta honrar se possível/relevante
+    try:
+        return provider.generate(prompt, model_name=model_name)
+    except Exception as e:
+        print(f"Erro na chamada do LLM: {e}")
+        return ""
 
 
 def chamar_llm_com_retry(prompt: str, logger, max_retries: int = 3, delay: int = 2) -> str:
@@ -180,19 +163,16 @@ def chamar_llm_com_retry(prompt: str, logger, max_retries: int = 3, delay: int =
 
 def chamar_deepseek(prompt: str) -> str:
     """
-    Chama o modelo DeepSeek para gerar uma resposta baseada no prompt.
-    A API Key é carregada automaticamente de DEEPSEEK_API_KEY se definida como variável de ambiente.
+    Wrapper legado para manter compatibilidade, mas agora usa o Gateway.
+    Força o uso do provider DeepSeek se instanciado explicitamente, 
+    ou confia no gateway se a config estiver certa.
+    
+    Para garantir comportamento, aqui podemos instanciar o adapter direto se necessário,
+    mas idealmente usamos o env var LLM_PROVIDER='deepseek'.
     """
-    client = OpenAI(api_key="sk-", base_url="https://api.deepseek.com/v1")
-    try:
-        response = client.chat.completions.create(
-            model="deepseek-chat",
-            messages=[
-                {"role": "user", "content": prompt},
-            ],
-            stream=False,
-            temperature=0,
-        )
-        return response.choices[0].message.content
-    except Exception as e:
-        return f"Ocorreu um erro ao chamar o DeepSeek: {e}"
+    # Opção A: Usar o gateway (respeita .env)
+    return chamar_llm(prompt, model_name="deepseek-chat")
+    
+    # Opção B (Se quisermos forçar DeepSeek independente do env):
+    # from data_pipeline.infra.llm_gateway import DeepSeekAdapter
+    # return DeepSeekAdapter().generate(prompt)

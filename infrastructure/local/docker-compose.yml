@@ -1,0 +1,185 @@
+version: '3.8'
+
+services:
+  # --- MLflow Tracking Server ---
+  mlflow:
+    image: ghcr.io/mlflow/mlflow:v2.14.1
+    container_name: mlflow_server
+    ports:
+      - "5000:5000"
+    environment:
+      - MLFLOW_BACKEND_STORE_URI=sqlite:///mlflow.db
+      - MLFLOW_DEFAULT_ARTIFACT_ROOT=/mlflow/artifacts
+    volumes:
+      - ./mlruns:/mlflow
+    command: mlflow server --backend-store-uri sqlite:///mlflow/mlflow.db --default-artifact-root /mlflow/artifacts --host 0.0.0.0
+
+  # --- Elasticsearch ---
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:7.17.13
+    container_name: elasticsearch
+    environment:
+      - node.name=elasticsearch
+      - discovery.type=single-node
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+    ports:
+      - "9200:9200"
+    volumes:
+      - es_data:/usr/share/elasticsearch/data
+
+  # --- Logstash ---
+  logstash:
+    image: docker.elastic.co/logstash/logstash:7.17.13
+    container_name: logstash
+    ports:
+      - "50000:50000/tcp"
+      - "50000:50000/udp"
+    volumes:
+      - ./config/logstash/pipeline:/usr/share/logstash/pipeline
+    environment:
+      - LS_JAVA_OPTS=-Xmx256m -Xms256m
+    depends_on:
+      - elasticsearch
+
+  # --- Kibana (Optional Visualization) ---
+  kibana:
+    image: docker.elastic.co/kibana/kibana:7.17.13
+    container_name: kibana
+    ports:
+      - "5601:5601"
+    environment:
+      - ELASTICSEARCH_HOSTS=http://elasticsearch:9200
+    depends_on:
+      - elasticsearch
+
+  # --- Main API ---
+  api:
+    build:
+      context: ../../
+      dockerfile: infrastructure/local/Dockerfile
+    container_name: recruitment_api
+    ports:
+      - "8000:8000"
+    environment:
+      - MLFLOW_TRACKING_URI=http://mlflow:5000
+      - LOGSTASH_HOST=logstash
+      - LOGSTASH_PORT=50000
+      # Point to local Ollama on host (Linux)
+      - OLLAMA_HOST=http://host.docker.internal:11434
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    volumes:
+      - ../../data:/app/data
+      - ../../models:/app/models
+      - ../../data_pipeline:/app/data_pipeline # Mount for dev/reload
+      - ../../serving:/app/serving
+    depends_on:
+      - mlflow
+      - logstash
+
+  # ========== PHASE 2: OBSERVABILITY STACK ==========
+
+  # --- Langfuse PostgreSQL ---
+  langfuse_db:
+    image: postgres:15
+    container_name: langfuse_postgres
+    environment:
+      POSTGRES_USER: langfuse
+      POSTGRES_PASSWORD: langfuse_secret
+      POSTGRES_DB: langfuse
+    volumes:
+      - langfuse_db_data:/var/lib/postgresql/data
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready -U langfuse" ]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # --- Langfuse (Prompt Management & LLM Observability) ---
+  langfuse:
+    image: langfuse/langfuse:latest
+    container_name: langfuse
+    ports:
+      - "3000:3000"
+    environment:
+      DATABASE_URL: postgresql://langfuse:langfuse_secret@langfuse_db:5432/langfuse
+      NEXTAUTH_SECRET: changeme_random_secret_key_for_nextauth
+      NEXTAUTH_URL: http://localhost:3000
+      SALT: changeme_random_salt_key
+    depends_on:
+      langfuse_db:
+        condition: service_healthy
+
+  # --- Airflow PostgreSQL ---
+  airflow_db:
+    image: postgres:13
+    container_name: airflow_postgres
+    environment:
+      POSTGRES_USER: airflow
+      POSTGRES_PASSWORD: airflow
+      POSTGRES_DB: airflow
+    volumes:
+      - airflow_db_data:/var/lib/postgresql/data
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready -U airflow" ]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # --- Airflow Webserver ---
+  airflow_webserver:
+    build:
+      context: .
+      dockerfile: Dockerfile.airflow
+    container_name: airflow_webserver
+    command: webserver
+    ports:
+      - "8080:8080"
+    environment:
+      AIRFLOW__CORE__EXECUTOR: LocalExecutor
+      AIRFLOW__DATABASE__SQL_ALCHEMY_CONN: postgresql+psycopg2://airflow:airflow@airflow_db/airflow
+      AIRFLOW__CORE__FERNET_KEY: ''
+      AIRFLOW__CORE__DAGS_ARE_PAUSED_AT_CREATION: 'true'
+      AIRFLOW__CORE__LOAD_EXAMPLES: 'false'
+      AIRFLOW__WEBSERVER__SECRET_KEY: changeme_airflow_secret_key
+      _AIRFLOW_DB_UPGRADE: 'true'
+      _AIRFLOW_WWW_USER_CREATE: 'true'
+      _AIRFLOW_WWW_USER_USERNAME: admin
+      _AIRFLOW_WWW_USER_PASSWORD: admin
+    volumes:
+      - ../../dags:/opt/airflow/dags
+      - ./airflow/airflow_logs:/opt/airflow/logs
+      - ./airflow/airflow_plugins:/opt/airflow/plugins
+      - ../../data:/opt/airflow/data:ro
+      - ../../models:/opt/airflow/models:ro
+    depends_on:
+      airflow_db:
+        condition: service_healthy
+
+  # --- Airflow Scheduler ---
+  airflow_scheduler:
+    build:
+      context: .
+      dockerfile: Dockerfile.airflow
+    container_name: airflow_scheduler
+    command: scheduler
+    environment:
+      AIRFLOW__CORE__EXECUTOR: LocalExecutor
+      AIRFLOW__DATABASE__SQL_ALCHEMY_CONN: postgresql+psycopg2://airflow:airflow@airflow_db/airflow
+      AIRFLOW__CORE__FERNET_KEY: ''
+      AIRFLOW__CORE__DAGS_ARE_PAUSED_AT_CREATION: 'true'
+      AIRFLOW__CORE__LOAD_EXAMPLES: 'false'
+    volumes:
+      - ../../dags:/opt/airflow/dags
+      - ./airflow/airflow_logs:/opt/airflow/logs
+      - ./airflow/airflow_plugins:/opt/airflow/plugins
+      - ../../data:/opt/airflow/data:ro
+      - ../../models:/opt/airflow/models:ro
+    depends_on:
+      airflow_db:
+        condition: service_healthy
+
+volumes:
+  es_data:
+  langfuse_db_data:
+  airflow_db_data:
